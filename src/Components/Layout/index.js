@@ -7,5 +7,4 @@ export{
     Footer,
     SideNavbar,
     TopNavBar
-    
 }

@@ -1,22 +1,39 @@
-import React from 'react'
-import { FaList } from "react-icons/fa";
+import React, { memo, useEffect, useState, useRef } from 'react'
+import { FaList, FaRegBell, FaRocketchat } from "react-icons/fa";
 const Header = () => {
-    const handleToggle=()=>{
-        // ('body').classList.toggle('toggle-sidebar');
+    const [showProfile, setShowProfile] = useState(false)
+    const handleToggle = () => {
         document.body.classList.toggle('toggle-sidebar');
     }
+    const profileRef = useRef(null);
 
+    const notificationStyle = {
+        position: 'absolute', margin: 0, transform: 'translate(-25px, 35px)'
+    }
+
+    const profileStyle = {
+        position: 'absolute', margin: 0, transform: 'translate(-10px, 38px)', inset: '0px 0px auto auto'
+    }
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+    }, [])
+
+    function handleClickOutside(event) {
+        if (profileRef && !profileRef.current.contains(event.target)) {
+            setShowProfile(false)
+        }
+    }
     return (
         <header id="header" className="header fixed-top d-flex align-items-center">
             <div className="d-flex align-items-center justify-content-between">
                 <a href="index.html" className="logo d-flex align-items-center">
                     <img src="assets/img/logo.png" alt="" />
-                    <span className="d-none d-lg-block">NiceAdmin</span>
+                    <span className="d-none d-lg-block">E.R.P.</span>
                 </a>
-                <FaList className="toggle-sidebar-btn" onClick={handleToggle}/>
+                <FaList className="toggle-sidebar-btn" onClick={handleToggle} />
             </div>
             {/* End Logo */}
-            <div className="search-bar">
+            {/* <div className="search-bar">
                 <form
                     className="search-form d-flex align-items-center"
                     method="POST"
@@ -32,7 +49,7 @@ const Header = () => {
                         <i className="bi bi-search" />
                     </button>
                 </form>
-            </div>
+            </div> */}
             {/* End Search Bar */}
             <nav className="header-nav ms-auto">
                 <ul className="d-flex align-items-center">
@@ -44,11 +61,12 @@ const Header = () => {
                     {/* End Search Icon*/}
                     <li className="nav-item dropdown">
                         <a className="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i className="bi bi-bell" />
+                            <FaRegBell />
                             <span className="badge bg-primary badge-number">4</span>
                         </a>
                         {/* End Notification Icon */}
-                        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+
+                        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" style={notificationStyle}>
                             <li className="dropdown-header">
                                 You have 4 new notifications
                                 <a href="#">
@@ -113,7 +131,7 @@ const Header = () => {
                     {/* End Notification Nav */}
                     <li className="nav-item dropdown">
                         <a className="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i className="bi bi-chat-left-text" />
+                            <FaRocketchat />
                             <span className="badge bg-success badge-number">3</span>
                         </a>
                         {/* End Messages Icon */}
@@ -197,9 +215,8 @@ const Header = () => {
                     </li>
                     {/* End Messages Nav */}
                     <li className="nav-item dropdown pe-3">
-                        <a
-                            className="nav-link nav-profile d-flex align-items-center pe-0"
-                            href="#"
+                        <a ref={profileRef} onClick={() => setShowProfile(!showProfile)}
+                            className={(showProfile ? 'show' : '') + " nav-link nav-profile d-flex align-items-center pe-0"}
                             data-bs-toggle="dropdown"
                         >
                             <img
@@ -212,7 +229,7 @@ const Header = () => {
                             </span>
                         </a>
                         {/* End Profile Iamge Icon */}
-                        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <ul className={(showProfile ? 'show' : '') + " dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"} style={showProfile ? profileStyle : null}>
                             <li className="dropdown-header">
                                 <h6>Kevin Anderson</h6>
                                 <span>Web Designer</span>
@@ -273,4 +290,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default memo(Header)
