@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { FaChevronDown,FaUser,FaRegCircle } from "react-icons/fa";
 import { BsGridFill } from "react-icons/bs";
+import { Link } from 'react-router-dom';
+import RouteName from '../../CustomRoutes/RouteName';
 const SideNavbar = () => {
     const [collapsedToggled,setCollapsedToggled] = useState('');
     const [isCollapse,setIsCollapse] = useState(false);
@@ -81,17 +83,16 @@ const SideNavbar = () => {
 
                     </ul>
                 </li>
-                {/* End Forms Nav */}
-                {/* End Icons Nav */}
-                <li className="nav-heading">Pages</li>
+                {/* <li className="nav-heading">Pages</li> */}
                 <li className="nav-item">
-                    <a className="nav-link collapsed" href="users-profile.html">
-                        <i className="bi bi-person" />
-                        <span>Profile</span>
-                    </a>
+                    <Link to={RouteName.USER} className="nav-link collapsed" >
+                        <a>
+                            <FaUser />
+                            <span>User management</span>
+                        </a>
+                    </Link>
+                   
                 </li>
-
-                {/* End Blank Page Nav */}
             </ul>
         </aside>
     )

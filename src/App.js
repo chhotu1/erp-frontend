@@ -1,14 +1,17 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-
-import { Header, Footer, SideNavbar } from './Components/Layout';
-import {Dashboard} from './Components'
+import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CustomRoutes from './CustomRoutes';
-
+import { store } from './store';
 function App() {
   return (
-    <Router>
-        <CustomRoutes/>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <CustomRoutes />
+      </Router>
+      <ToastContainer />
+    </Provider>
   );
 }
 

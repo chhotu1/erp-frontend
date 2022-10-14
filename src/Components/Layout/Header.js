@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState, useRef } from 'react'
-import { FaList, FaRegBell, FaRocketchat } from "react-icons/fa";
+import { FaList, FaRegBell, FaRegQuestionCircle, FaRegSun, FaRegUser, FaRocketchat, FaSignOutAlt } from "react-icons/fa";
 const Header = () => {
     const [showProfile, setShowProfile] = useState(false)
     const handleToggle = () => {
@@ -32,24 +32,7 @@ const Header = () => {
                 </a>
                 <FaList className="toggle-sidebar-btn" onClick={handleToggle} />
             </div>
-            {/* End Logo */}
-            {/* <div className="search-bar">
-                <form
-                    className="search-form d-flex align-items-center"
-                    method="POST"
-                    action="#"
-                >
-                    <input
-                        type="text"
-                        name="query"
-                        placeholder="Search"
-                        title="Enter search keyword"
-                    />
-                    <button type="submit" title="Search">
-                        <i className="bi bi-search" />
-                    </button>
-                </form>
-            </div> */}
+
             {/* End Search Bar */}
             <nav className="header-nav ms-auto">
                 <ul className="d-flex align-items-center">
@@ -242,7 +225,7 @@ const Header = () => {
                                     className="dropdown-item d-flex align-items-center"
                                     href="users-profile.html"
                                 >
-                                    <i className="bi bi-person" />
+                                    <FaRegUser />
                                     <span>My Profile</span>
                                 </a>
                             </li>
@@ -254,7 +237,7 @@ const Header = () => {
                                     className="dropdown-item d-flex align-items-center"
                                     href="users-profile.html"
                                 >
-                                    <i className="bi bi-gear" />
+                                    <FaRegSun />
                                     <span>Account Settings</span>
                                 </a>
                             </li>
@@ -266,7 +249,7 @@ const Header = () => {
                                     className="dropdown-item d-flex align-items-center"
                                     href="pages-faq.html"
                                 >
-                                    <i className="bi bi-question-circle" />
+                                    <FaRegQuestionCircle />
                                     <span>Need Help?</span>
                                 </a>
                             </li>
@@ -275,7 +258,7 @@ const Header = () => {
                             </li>
                             <li>
                                 <a className="dropdown-item d-flex align-items-center" href="#">
-                                    <i className="bi bi-box-arrow-right" />
+                                    <FaSignOutAlt />
                                     <span>Sign Out</span>
                                 </a>
                             </li>

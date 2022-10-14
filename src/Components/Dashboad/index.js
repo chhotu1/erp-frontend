@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {FaDollarSign, FaShoppingCart, FaUsers} from 'react-icons/fa'
 const Dashboard = () => {
     return (
         <div>
@@ -23,38 +24,13 @@ const Dashboard = () => {
                                 {/* Sales Card */}
                                 <div className="col-xxl-4 col-md-6">
                                     <div className="card info-card sales-card">
-                                        <div className="filter">
-                                            <a className="icon" href="#" data-bs-toggle="dropdown">
-                                                <i className="bi bi-three-dots" />
-                                            </a>
-                                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li className="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        Today
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Month
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Year
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                         <div className="card-body">
                                             <h5 className="card-title">
                                                 Sales <span>| Today</span>
                                             </h5>
                                             <div className="d-flex align-items-center">
                                                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i className="bi bi-cart" />
+                                                    <FaShoppingCart />
                                                 </div>
                                                 <div className="ps-3">
                                                     <h6>145</h6>
@@ -73,38 +49,13 @@ const Dashboard = () => {
                                 {/* Revenue Card */}
                                 <div className="col-xxl-4 col-md-6">
                                     <div className="card info-card revenue-card">
-                                        <div className="filter">
-                                            <a className="icon" href="#" data-bs-toggle="dropdown">
-                                                <i className="bi bi-three-dots" />
-                                            </a>
-                                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li className="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        Today
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Month
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Year
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                         <div className="card-body">
                                             <h5 className="card-title">
                                                 Revenue <span>| This Month</span>
                                             </h5>
                                             <div className="d-flex align-items-center">
                                                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i className="bi bi-currency-dollar" />
+                                                    <FaDollarSign />
                                                 </div>
                                                 <div className="ps-3">
                                                     <h6>$3,264</h6>
@@ -123,38 +74,13 @@ const Dashboard = () => {
                                 {/* Customers Card */}
                                 <div className="col-xxl-4 col-xl-12">
                                     <div className="card info-card customers-card">
-                                        <div className="filter">
-                                            <a className="icon" href="#" data-bs-toggle="dropdown">
-                                                <i className="bi bi-three-dots" />
-                                            </a>
-                                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li className="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        Today
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Month
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Year
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                         <div className="card-body">
                                             <h5 className="card-title">
                                                 Customers <span>| This Year</span>
                                             </h5>
                                             <div className="d-flex align-items-center">
                                                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i className="bi bi-people" />
+                                                    <FaUsers/>
                                                 </div>
                                                 <div className="ps-3">
                                                     <h6>1244</h6>
@@ -169,74 +95,9 @@ const Dashboard = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {/* End Customers Card */}
-                                {/* Reports */}
-                                <div className="col-12">
-                                    <div className="card">
-                                        <div className="filter">
-                                            <a className="icon" href="#" data-bs-toggle="dropdown">
-                                                <i className="bi bi-three-dots" />
-                                            </a>
-                                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li className="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        Today
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Month
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Year
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                Reports <span>/Today</span>
-                                            </h5>
-                                            {/* Line Chart */}
-                                            <div id="reportsChart" />
-                                            {/* End Line Chart */}
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* End Reports */}
-                                {/* Recent Sales */}
                                 <div className="col-12">
                                     <div className="card recent-sales overflow-auto">
-                                        <div className="filter">
-                                            <a className="icon" href="#" data-bs-toggle="dropdown">
-                                                <i className="bi bi-three-dots" />
-                                            </a>
-                                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li className="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        Today
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Month
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Year
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        
                                         <div className="card-body">
                                             <h5 className="card-title">
                                                 Recent Sales <span>| Today</span>
@@ -336,31 +197,6 @@ const Dashboard = () => {
                                 {/* Top Selling */}
                                 <div className="col-12">
                                     <div className="card top-selling overflow-auto">
-                                        <div className="filter">
-                                            <a className="icon" href="#" data-bs-toggle="dropdown">
-                                                <i className="bi bi-three-dots" />
-                                            </a>
-                                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li className="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        Today
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Month
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a className="dropdown-item" href="#">
-                                                        This Year
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                         <div className="card-body pb-0">
                                             <h5 className="card-title">
                                                 Top Selling <span>| Today</span>
@@ -464,31 +300,7 @@ const Dashboard = () => {
                         <div className="col-lg-4">
                             {/* Recent Activity */}
                             <div className="card">
-                                <div className="filter">
-                                    <a className="icon" href="#" data-bs-toggle="dropdown">
-                                        <i className="bi bi-three-dots" />
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li className="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                Today
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                This Month
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                This Year
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                
                                 <div className="card-body">
                                     <h5 className="card-title">
                                         Recent Activity <span>| Today</span>
@@ -553,112 +365,12 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* End Recent Activity */}
-                            {/* Budget Report */}
-                            <div className="card">
-                                <div className="filter">
-                                    <a className="icon" href="#" data-bs-toggle="dropdown">
-                                        <i className="bi bi-three-dots" />
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li className="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                Today
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                This Month
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                This Year
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="card-body pb-0">
-                                    <h5 className="card-title">
-                                        Budget Report <span>| This Month</span>
-                                    </h5>
-                                    <div
-                                        id="budgetChart"
-                                        style={{ minHeight: 400 }}
-                                        className="echart"
-                                    />
-                                </div>
-                            </div>
-                            {/* End Budget Report */}
-                            {/* Website Traffic */}
-                            <div className="card">
-                                <div className="filter">
-                                    <a className="icon" href="#" data-bs-toggle="dropdown">
-                                        <i className="bi bi-three-dots" />
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li className="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                Today
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                This Month
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                This Year
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="card-body pb-0">
-                                    <h5 className="card-title">
-                                        Website Traffic <span>| Today</span>
-                                    </h5>
-                                    <div
-                                        id="trafficChart"
-                                        style={{ minHeight: 400 }}
-                                        className="echart"
-                                    />
-                                </div>
-                            </div>
+                            
+                           
                             {/* End Website Traffic */}
                             {/* News & Updates Traffic */}
                             <div className="card">
-                                <div className="filter">
-                                    <a className="icon" href="#" data-bs-toggle="dropdown">
-                                        <i className="bi bi-three-dots" />
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li className="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                Today
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                This Month
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                This Year
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                               
                                 <div className="card-body pb-0">
                                     <h5 className="card-title">
                                         News &amp; Updates <span>| Today</span>
