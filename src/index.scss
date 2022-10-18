@@ -675,7 +675,8 @@ h6 {
   padding: 0;
   margin: 0;
   list-style: none;
-  a{
+
+  a {
     cursor: pointer;
   }
 }
@@ -1255,6 +1256,58 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
-.error{
+
+.error {
   color: #f11d0e;
+}
+.invalid-form{
+  border-color: #dc3545;
+}
+
+
+.custom-card {
+  // padding: 2rem;
+  p {
+    padding: 20px 0 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #012970;
+    font-family: "Poppins", sans-serif;
+  }
+
+  a {
+    padding: 5px;
+    color: #000000;
+
+    &.hover {
+      color: #000000;
+    }
+  }
+
+  &.hover {
+    color: #000000;
+  }
+
+  .card-btn-container {
+    padding: 20px 0 15px 0;
+
+    .card-btn {
+      a {
+        cursor: pointer;
+        background: #012970;
+        color: #ffffff;
+        padding: 8px 18px 8px 18px;
+        border-radius: 10px;
+        text-decoration: none;
+
+        &.hover {
+          -webkit-text-decoration: none;
+          text-decoration: none;
+          background-color: #d4113c;
+          box-shadow: 0 0 1px 0 rgb(0 0 0 / 31%), 0 3px 4px -2px rgb(0 0 0 / 25%);
+        }
+      }
+    }
+
+  }
 }

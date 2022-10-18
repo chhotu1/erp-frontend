@@ -83,13 +83,10 @@ const SideNavbar = () => {
 
                     </ul>
                 </li>
-                {/* <li className="nav-heading">Pages</li> */}
                 <li className="nav-item">
                     <Link to={RouteName.USER} className="nav-link collapsed" >
-                        <a>
-                            <FaUser />
-                            <span>User management</span>
-                        </a>
+                        <FaUser />
+                        <span>User management</span>
                     </Link>
                    
                 </li>
