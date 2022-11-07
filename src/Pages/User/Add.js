@@ -1,23 +1,33 @@
 import React from 'react';
 import { Formik } from "formik";
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
 import RouteName from '../../CustomRoutes/RouteName';
 import { MainSection, Input, Select } from '../../Components';
 import { roleTypes } from '../../utils/Constant';
 import { UserSchema } from '../../utils/FormValidation';
+import { register } from '../../store/Slices/authSlice';
 const Add = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     let breadcrumb = [
         { title: "Home", link: RouteName.HOME },
         { title: "Users", link: RouteName.USER },
     ]
+    
+
+    const handleRegister=(payload)=>{
+        dispatch(register({ payload, navigate, toast }));
+    }
+
     return (
         <MainSection breadcrumb={breadcrumb} backLink={RouteName.USER} breadcrumbTitle="Create User" cardTitle="User">
             <Formik initialValues={{ email: "", password: "", name: '' }}
                 validationSchema={UserSchema}
                 enableReinitialize
-                onSubmit={(values) => console.log(values)}>
+                onSubmit={handleRegister}>
                 {({ handleChange, handleSubmit, errors, values, handleBlur }) => (
-
                     <form className="row g-3" onSubmit={handleSubmit}>
                         <div className='row'>
                             <div className='col-md-6'>
@@ -26,9 +36,9 @@ const Add = () => {
                                 <Input name="password" label="Password" type="password" placeholder="Password" onBlur={handleBlur('password')} onChange={handleChange('password')} error={errors.password} />
                             </div>
                             <div className='col-md-6'>
-                                <Select label="Select Role" placeholder="Select Role" name="role" onBlur={handleBlur('role')} onChange={handleChange('role')} data={roleTypes} error={errors.role}/>
-                                <Input name="photo" label="Photo" type="file" />
-                                <Input name="phone" label="Phone" type="text" placeholder="Phone" />
+                                <Select label="Select Role" placeholder="Select Role" name="role" onBlur={handleBlur('role')} onChange={handleChange('role')} data={roleTypes} error={errors.role} />
+                                <Input name="photo" label="Photo" type="file" accept="image/*" />
+                                <Input name="phone" label="Phone" type="text" placeholder="Phone" onBlur={handleBlur('phone')} onChange={handleChange('phone')} error={errors.phone} />
                             </div>
                         </div>
                         <div className="text-right">

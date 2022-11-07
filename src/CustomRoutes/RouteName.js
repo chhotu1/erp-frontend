@@ -1,6 +1,6 @@
 export default {
     HOME: '/',
-    LOGIN: '/login',
+    LOGIN: '/public/login',
     REGISTER: '/register',
     USER:'/user',
     USER_CREATE:'/user/create'

@@ -4,6 +4,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CustomRoutes from './CustomRoutes';
 import { store } from './store';
+import axios from 'axios';
+axios.defaults.baseURL=process.env.REACT_APP_API_URL;
 function App() {
   return (
     <Provider store={store}>

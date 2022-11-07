@@ -2,15 +2,9 @@ import http from "../utils/http-common";
 import endpoints from "../utils/endpoints";
 import StorageService from './StorageService';
 
-const login=(data)=>{
-  return http.post(endpoints.login,data);
-}
-
-const register=(data)=>{
-  return http.post(endpoints.register,data, {headers: {token: StorageService.getAccessToken()}});
-}
-const getAll = () => {
-  return http.get("https://jsonplaceholder.typicode.com/todos");
+const getAllUsers = () => {
+    return http.get(endpoints.user, {headers: {token: StorageService.getAccessToken()}});
+    // return http.get("https://jsonplaceholder.typicode.com/todos");
 };
 
 const get = id => {
@@ -37,10 +31,8 @@ const findByTitle = title => {
   return http.get(`/tutorials?title=${title}`);
 };
 
-const AuthService = {
- login,
- register,
- getAll
+const UserService = {
+ getAllUsers
 };
 
-export default AuthService;
+export default UserService;

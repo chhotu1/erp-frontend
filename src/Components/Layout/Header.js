@@ -1,7 +1,11 @@
 import React, { memo, useEffect, useState, useRef } from 'react'
+import ReactDOM from 'react-dom';
 import { FaList, FaRegBell, FaRegQuestionCircle, FaRegSun, FaRegUser, FaRocketchat, FaSignOutAlt } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import RouteName from '../../CustomRoutes/RouteName';
 const Header = () => {
-    const [showProfile, setShowProfile] = useState(false)
+    const [showProfile, setShowProfile] = useState(false);
+    const navigate = useNavigate();
     const handleToggle = () => {
         document.body.classList.toggle('toggle-sidebar');
     }
@@ -15,13 +19,22 @@ const Header = () => {
         position: 'absolute', margin: 0, transform: 'translate(-10px, 38px)', inset: '0px 0px auto auto'
     }
     useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside);
-    }, [])
+        document.addEventListener('click', handleClickOutside, true);
+        return () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        };
+    }, []);
+
 
     function handleClickOutside(event) {
-        if (profileRef && !profileRef.current.contains(event.target)) {
+        if (profileRef &&profileRef!=='' && profileRef!==null && !profileRef.current.contains(event.target)) {
             setShowProfile(false)
         }
+    }
+
+    const handleSignout=()=>{
+        localStorage.clear();
+        navigate(RouteName.LOGIN);
     }
     return (
         <header id="header" className="header fixed-top d-flex align-items-center">
@@ -197,8 +210,8 @@ const Header = () => {
                         {/* End Messages Dropdown Items */}
                     </li>
                     {/* End Messages Nav */}
-                    <li className="nav-item dropdown pe-3">
-                        <a ref={profileRef} onClick={() => setShowProfile(!showProfile)}
+                    <li className="nav-item dropdown pe-3" ref={profileRef}>
+                        <a  onClick={() => setShowProfile(!showProfile)}
                             className={(showProfile ? 'show' : '') + " nav-link nav-profile d-flex align-items-center pe-0"}
                             data-bs-toggle="dropdown"
                         >
@@ -257,7 +270,7 @@ const Header = () => {
                                 <hr className="dropdown-divider" />
                             </li>
                             <li>
-                                <a className="dropdown-item d-flex align-items-center" href="#">
+                                <a className="dropdown-item d-flex align-items-center" onClick={handleSignout}>
                                     <FaSignOutAlt />
                                     <span>Sign Out</span>
                                 </a>
