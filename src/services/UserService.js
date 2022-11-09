@@ -4,7 +4,6 @@ import StorageService from './StorageService';
 
 const getAllUsers = () => {
     return http.get(endpoints.user, {headers: {token: StorageService.getAccessToken()}});
-    // return http.get("https://jsonplaceholder.typicode.com/todos");
 };
 
 const get = id => {
