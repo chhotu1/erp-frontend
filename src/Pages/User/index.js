@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import RouteName from '../../CustomRoutes/RouteName';
 import MainSection from '../../Components/MainSection';
 import { getAllUsers } from '../../store/Slices/userSlice';
+import Rows from './Rows';
 const User = () => {
     let breadcrumb = [
         { title: "Home", link: RouteName.HOME },
@@ -12,8 +13,7 @@ const User = () => {
     const user = useSelector((state) => ({
         ...state.user,
     }));
-
-    //   console.log(user.users,'users')
+    
     useEffect(() => {
         dispatch(getAllUsers({}));
     }, []);
@@ -33,25 +33,11 @@ const User = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {user.users &&user.users.data && user.users.data.map((item, index) => {
-                        return (
-                            <tr key={index}>
-                                <th scope="row">
-                                    <a href="#">{index+1}</a>
-                                </th>
-                                <td>{item.name}</td>
-                                <td>
-                                    <a href="#" className="text-primary">
-                                    {item.email}
-                                    </a>
-                                </td>
-                                <td>{item?.phone}</td>
-                                <td>
-                                    <span className="badge bg-success">Approved</span>
-                                </td>
-                            </tr>
-                        )
-                    })}
+                    {
+                        user.users && user.users.data ? (
+                            user.users && user.users.data.map((item, index) => <Rows key={item._id} data={item} index={index} />)
+                        ) : null
+                    }
                 </tbody>
             </table>
         </MainSection>
