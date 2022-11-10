@@ -21,6 +21,34 @@ export const getAllUsers = createAsyncThunk(
   }
 );
 
+export const deleteUser = createAsyncThunk(
+  "user/delete",
+  async ({ id, toast }, { rejectWithValue }) => {
+      try{
+          const response = await UserService.remove(id);
+          if(response.data.status===true){
+              toast.success(response.data.message, {
+                  position: toast.POSITION.TOP_RIGHT,
+                  theme: "colored",
+              })
+              return id;
+          }else{
+              toast.error(response.data.message, {
+                  position: toast.POSITION.TOP_RIGHT,
+                  theme: "colored",
+              })
+              return rejectWithValue(response.data.message);
+          }
+      }catch(error){
+          if(error.response){
+              return rejectWithValue(error.response.data.message);
+          }else{
+              return rejectWithValue("Something went wrong");
+          }
+      }
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -40,8 +68,20 @@ const userSlice = createSlice({
     },
     [getAllUsers.rejected]: (state, action) => {
       state.loading = false;
-      console.log(action,'----------------------------------------')
-      state.error = 'action.payload.message';
+      state.error = action.payload.message;
+    },
+
+    [deleteUser.pending]: (state, action) => {
+      state.loading = true
+    },
+    [deleteUser.fulfilled]: (state, action) => {
+      let index = state.users.data.findIndex(({ _id }) => _id === action.payload);
+      state.users.data.splice(index, 1);
+      state.loading = false
+    },
+    [deleteUser.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
     },
   },
 });

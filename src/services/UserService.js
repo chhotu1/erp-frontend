@@ -19,19 +19,17 @@ const update = (id, data) => {
 };
 
 const remove = id => {
-  return http.delete(`/tutorials/${id}`);
+  return http.delete(`${endpoints.user}/${id}`, {headers: {token: StorageService.getAccessToken()}});
 };
 
-const removeAll = () => {
-  return http.delete(`/tutorials`);
-};
 
 const findByTitle = title => {
   return http.get(`/tutorials?title=${title}`);
 };
 
 const UserService = {
- getAllUsers
+ getAllUsers,
+ remove
 };
 
 export default UserService;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaChevronDown,FaUser,FaRegCircle } from "react-icons/fa";
+import { FaChevronDown,FaUser,FaRegCircle, FaUserAlt, FaUsers } from "react-icons/fa";
 import { BsGridFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import RouteName from '../../CustomRoutes/RouteName';
@@ -20,13 +20,13 @@ const SideNavbar = () => {
         <aside id="sidebar" className="sidebar">
             <ul className="sidebar-nav" id="sidebar-nav">
                 <li className="nav-item">
-                    <a className="nav-link" href="/">
+                    <Link className="nav-link" to="/">
                         <BsGridFill className='bi bi-grid'/>
                         <span>Dashboard</span>
-                    </a>
+                    </Link>
                 </li>
                 {/* End Dashboard Nav */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <a onClick={()=>handleCollaped('Components')}
                         className={"nav-link " +(isCollapse && collapsedToggled==='Components'?'':'collapsed')}
                         data-bs-target="#components-nav"
@@ -56,9 +56,9 @@ const SideNavbar = () => {
                         </li>
 
                     </ul>
-                </li>
+                </li> */}
                 {/* End Components Nav */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <a
                        onClick={()=>handleCollaped('Forms')}
                         className={"nav-link " +(isCollapse && collapsedToggled==='Forms'?'':'collapsed')}
@@ -82,13 +82,18 @@ const SideNavbar = () => {
                         </li>
 
                     </ul>
-                </li>
+                </li> */}
                 <li className="nav-item">
                     <Link to={RouteName.USER} className="nav-link collapsed" >
                         <FaUser />
                         <span>User management</span>
                     </Link>
-                   
+                </li>
+                <li className="nav-item">
+                    <Link to={RouteName.CASHBOOK} className="nav-link collapsed" >
+                        <FaUsers />
+                        <span>Cashbook</span>
+                    </Link>
                 </li>
             </ul>
         </aside>

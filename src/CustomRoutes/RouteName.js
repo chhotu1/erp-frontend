@@ -3,6 +3,8 @@ export default {
     LOGIN: '/public/login',
     REGISTER: '/register',
     USER:'/user',
-    USER_CREATE:'/user/create'
+    USER_CREATE:'/user/create',
+    CASHBOOK:'/cashbook',
+    CASHBOOK_CREATE:'/cashbook/create'
 }
 

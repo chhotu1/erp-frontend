@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { FaTrashAlt, FaRegEdit } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import { deleteUser } from '../../store/Slices/userSlice';
 import { toast } from 'react-toastify';
 
@@ -13,14 +12,6 @@ const Rows = (props) => {
         console.log(data._id,'props.data._id');
         let id =data._id;
         dispatch(deleteUser({ id, toast }));
-        // dispatch(deleteTutorial({ id: data._id }))
-        //     .unwrap()
-        //       .then(() => {
-        //         navigate("/tutorials");
-        //       })
-        //     .catch(e => {
-        //     console.log(e);
-        // });
     }
 
     return (
@@ -36,7 +27,6 @@ const Rows = (props) => {
             </td>
             <td>{data?.phone}</td>
             <td>
-                {/* <div className="btn btn-info btn-sm"><Link to={'/user/edit/' + data._id} ><FaRegEdit /></Link></div> */}
                 <div className="btn btn-danger btn-sm m-2" onClick={handleDelete}><FaTrashAlt /></div>
             </td>
         </tr>

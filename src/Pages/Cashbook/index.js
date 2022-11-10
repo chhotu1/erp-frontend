@@ -5,7 +5,7 @@ import MainSection from '../../Components/MainSection';
 import { getAllUsers } from '../../store/Slices/userSlice';
 import Rows from './Rows';
 import { CustomLoader } from '../../Components/Shared';
-const User = () => {
+const Cashbook = () => {
     let breadcrumb = [
         { title: "Home", link: RouteName.HOME },
     ]
@@ -24,8 +24,8 @@ const User = () => {
 
 
     return (
-        <MainSection linkTitle="Add new user" link={RouteName.USER_CREATE}
-            breadcrumb={breadcrumb} breadcrumbTitle="Users" cardTitle="Users">
+        <MainSection linkTitle="Add new cashbook" link={RouteName.CASHBOOK_CREATE}
+            breadcrumb={breadcrumb} breadcrumbTitle="Cashbook" cardTitle="Cashbook">
                 {loading?<CustomLoader/>:''}
             <div className="table-responsive">
                 <table className="table">
@@ -39,11 +39,7 @@ const User = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            users && users.data ? (
-                                users && users.data.map((item, index) => <Rows key={item._id} data={item} index={index} />)
-                            ) : null
-                        }
+                       
                     </tbody>
                 </table>
             </div>
@@ -51,4 +47,4 @@ const User = () => {
     )
 }
 
-export default User
+export default Cashbook

@@ -14,7 +14,7 @@ const Add = () => {
     const navigate = useNavigate();
     let breadcrumb = [
         { title: "Home", link: RouteName.HOME },
-        { title: "Users", link: RouteName.USER },
+        { title: "Cashbook", link: RouteName.CASHBOOK },
     ]
     const {  loading } = useSelector((state) => ({
         ...state.auth,
@@ -24,7 +24,7 @@ const Add = () => {
     }
 
     return (
-        <MainSection breadcrumb={breadcrumb} backLink={RouteName.USER} breadcrumbTitle="Create User" cardTitle="User">
+        <MainSection breadcrumb={breadcrumb} backLink={RouteName.CASHBOOK} breadcrumbTitle="Create" cardTitle="Back">
             {loading?<CustomLoader/>:''}
             <Formik initialValues={{ email: "", password: "", name: '' }}
                 validationSchema={UserSchema}
