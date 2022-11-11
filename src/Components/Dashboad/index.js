@@ -9,13 +9,14 @@ const Dashboard = () => {
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
-                                <a href="index.html">Home</a>
+                                <a href="/">Home</a>
                             </li>
                             <li className="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </nav>
                 </div>
                 {/* End Page Title */}
+
                 <section className="section dashboard">
                     <div className="row">
                         {/* Left side columns */}
@@ -26,7 +27,7 @@ const Dashboard = () => {
                                     <div className="card info-card sales-card">
                                         <div className="card-body">
                                             <h5 className="card-title">
-                                                Sales <span>| Today</span>
+                                                Total Credit <span>| This Month</span>
                                             </h5>
                                             <div className="d-flex align-items-center">
                                                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -51,7 +52,7 @@ const Dashboard = () => {
                                     <div className="card info-card revenue-card">
                                         <div className="card-body">
                                             <h5 className="card-title">
-                                                Revenue <span>| This Month</span>
+                                                Total Debit <span>| This Month</span>
                                             </h5>
                                             <div className="d-flex align-items-center">
                                                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -76,7 +77,7 @@ const Dashboard = () => {
                                     <div className="card info-card customers-card">
                                         <div className="card-body">
                                             <h5 className="card-title">
-                                                Customers <span>| This Year</span>
+                                                Credit <span>| This Year</span>
                                             </h5>
                                             <div className="d-flex align-items-center">
                                                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">

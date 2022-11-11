@@ -18,3 +18,10 @@ export const UserSchema = Yup.object().shape({
         .min(3, "Password must be 3 characters at minimum")
         .required("The password field is required")
 });
+
+export const cashbookSchema = Yup.object().shape({
+    title: Yup.string().required("The title field is required"),
+    amount: Yup.number().required("The role field is required"),
+    user: Yup.string().required("The user field is required"),
+    type: Yup.string().required("The type field is required")
+});

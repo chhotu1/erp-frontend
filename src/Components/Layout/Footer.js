@@ -11,7 +11,7 @@ const Footer = () => {
       . All Rights Reserved
     </div>
     <div className="credits">
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Designed by <a href="https://erp-rho.vercel.app/">ERP</a>
     </div>
   </footer>
   )

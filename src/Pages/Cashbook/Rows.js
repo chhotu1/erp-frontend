@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 import { FaTrashAlt } from "react-icons/fa";
-import { deleteUser } from '../../store/Slices/userSlice';
+import { remove } from '../../store/Slices/cashbookSlice';
 import { toast } from 'react-toastify';
 
 const Rows = (props) => {
@@ -11,7 +11,7 @@ const Rows = (props) => {
         e.preventDefault();
         console.log(data._id,'props.data._id');
         let id =data._id;
-        dispatch(deleteUser({ id, toast }));
+        dispatch(remove({ id, toast }));
     }
 
     return (
@@ -19,13 +19,14 @@ const Rows = (props) => {
             <th scope="row">
                 <a href="#">{index + 1}</a>
             </th>
-            <td>{data.name}</td>
+            <td>{data.title}</td>
             <td>
                 <a href="#" className="text-primary">
-                    {data.email}
+                    {data.amount}
                 </a>
             </td>
-            <td>{data?.phone}</td>
+            <td>{data?.type}</td>
+            <td>{data?.user?.name}</td>
             <td>
                 <div className="btn btn-danger btn-sm m-2" onClick={handleDelete}><FaTrashAlt /></div>
             </td>

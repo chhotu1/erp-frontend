@@ -7,6 +7,11 @@ export const roleTypes = [
     { label: "User", value: USER },
 ];
 
+export const cashbookTypes = [
+    { label: "DEBIT", value:"DEBIT"},
+    { label: "CREDIT", value: "CREDIT" }
+];
+
 export function userRole(role) {
     return roleTypes.find((e)=>e.value===role);
 }

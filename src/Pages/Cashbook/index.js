@@ -2,25 +2,26 @@ import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import RouteName from '../../CustomRoutes/RouteName';
 import MainSection from '../../Components/MainSection';
-import { getAllUsers } from '../../store/Slices/userSlice';
 import Rows from './Rows';
 import { CustomLoader } from '../../Components/Shared';
+import { cashbookList } from '../../store/Slices/cashbookSlice';
 const Cashbook = () => {
     let breadcrumb = [
         { title: "Home", link: RouteName.HOME },
     ]
     const dispatch = useDispatch();
-    const { users, loading } = useSelector((state) => ({
-        ...state.user,
+
+    const { cashbooks, loading } = useSelector((state) => ({
+        ...state.cashbook,
     }));
 
-    const getUsers = useCallback(() => {
-        dispatch(getAllUsers({}));
+    const getCashbooks = useCallback(() => {
+        dispatch(cashbookList({}));
       }, [dispatch])
     
       useEffect(() => {
-        getUsers()
-      }, [getUsers])
+        getCashbooks()
+      }, [getCashbooks])
 
 
     return (
@@ -32,13 +33,20 @@ const Cashbook = () => {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">User</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                    {
+                            cashbooks && cashbooks.data ? (
+                                cashbooks && cashbooks.data.map((item, index) => <Rows key={item._id} data={item} index={index} />)
+                            ) : null
+                        }
                        
                     </tbody>
                 </table>

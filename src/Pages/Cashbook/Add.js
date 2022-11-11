@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import RouteName from '../../CustomRoutes/RouteName';
 import { MainSection, Input, Select } from '../../Components';
-import { roleTypes } from '../../utils/Constant';
-import { UserSchema } from '../../utils/FormValidation';
-import { register } from '../../store/Slices/authSlice';
+import { cashbookTypes } from '../../utils/Constant';
+import { cashbookSchema, UserSchema } from '../../utils/FormValidation';
+import { create } from '../../store/Slices/cashbookSlice';
 import { CustomLoader } from '../../Components/Shared';
+import { getAllUsers } from '../../store/Slices/userSlice';
+import { Form } from 'react-bootstrap';
 const Add = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -16,32 +18,60 @@ const Add = () => {
         { title: "Home", link: RouteName.HOME },
         { title: "Cashbook", link: RouteName.CASHBOOK },
     ]
-    const {  loading } = useSelector((state) => ({
+    const { loading } = useSelector((state) => ({
         ...state.auth,
-    }));    
-    const handleRegister=(payload)=>{
-        dispatch(register({ payload, navigate, toast }));
+    }));
+
+    const { create_update_loading } = useSelector((state) => ({
+        ...state.cashbook,
+    }));
+
+    const { users } = useSelector((state) => ({
+        ...state.user,
+    }));
+
+    const getUsers = useCallback(() => {
+        dispatch(getAllUsers({}));
+    }, [dispatch])
+
+    useEffect(() => {
+        getUsers()
+    }, [getUsers])
+
+    const handleCashbook = (payload) => {
+        dispatch(create({ payload, navigate, toast }));
     }
 
     return (
         <MainSection breadcrumb={breadcrumb} backLink={RouteName.CASHBOOK} breadcrumbTitle="Create" cardTitle="Back">
-            {loading?<CustomLoader/>:''}
-            <Formik initialValues={{ email: "", password: "", name: '' }}
-                validationSchema={UserSchema}
+            {create_update_loading ? <CustomLoader /> : ''}
+            <Formik initialValues={{ user: "", type: "", title: '',amount:"" }}
+                validationSchema={cashbookSchema}
                 enableReinitialize
-                onSubmit={handleRegister}>
+                onSubmit={handleCashbook}>
                 {({ handleChange, handleSubmit, errors, values, handleBlur }) => (
                     <form className="row g-3" onSubmit={handleSubmit}>
                         <div className='row'>
                             <div className='col-md-6'>
-                                <Input name="name" label="Your Name" placeholder="Name" onChange={handleChange('name')} error={errors.name} />
-                                <Input name="email" label="Email" type="email" placeholder="Email" onBlur={handleBlur('email')} onChange={handleChange('email')} error={errors.email} />
-                                <Input name="password" label="Password" type="password" placeholder="Password" onBlur={handleBlur('password')} onChange={handleChange('password')} error={errors.password} />
+
+                                <label className="form-label">
+                                    Select user
+                                </label>
+                                <Form.Select aria-label="Default select example" name="user" onBlur={handleBlur('user')} onChange={handleChange('user')}>
+                                    <option>Select user</option>
+                                    {users && users.data && users.data.map((item, index) => {
+                                        return (
+                                            <option value={item._id} key={index}>{item.name}</option>
+                                        )
+                                    })}
+                                </Form.Select>
+                                <div className="error">{errors.user}</div>
+                                <Input name="title" label="Title" placeholder="Title" onChange={handleChange('title')} error={errors.title} />
+
                             </div>
                             <div className='col-md-6'>
-                                <Select label="Select Role" placeholder="Select Role" name="role" onBlur={handleBlur('role')} onChange={handleChange('role')} data={roleTypes} error={errors.role} />
-                                <Input name="photo" label="Photo" type="file" accept="image/*" />
-                                <Input name="phone" label="Phone" type="text" placeholder="Phone" onBlur={handleBlur('phone')} onChange={handleChange('phone')} error={errors.phone} />
+                                <Select label="Select Type" placeholder="Select Type" name="type" onBlur={handleBlur('type')} onChange={handleChange('type')} data={cashbookTypes} error={errors.type} />
+                                <Input name="amount" label="Amount" type="text" placeholder="Amount" onBlur={handleBlur('amount')} onChange={handleChange('amount')} error={errors.amount} />
                             </div>
                         </div>
                         <div className="text-right">
