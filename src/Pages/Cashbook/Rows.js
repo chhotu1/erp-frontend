@@ -27,6 +27,7 @@ const Rows = (props) => {
             </td>
             <td>{data?.type}</td>
             <td>{data?.user?.name}</td>
+            <td>{data?.date}</td>
             <td>
                 <div className="btn btn-danger btn-sm m-2" onClick={handleDelete}><FaTrashAlt /></div>
             </td>

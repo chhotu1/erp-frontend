@@ -67,6 +67,7 @@ const Add = () => {
                                 </Form.Select>
                                 <div className="error">{errors.user}</div>
                                 <Input name="title" label="Title" placeholder="Title" onChange={handleChange('title')} error={errors.title} />
+                                <Input type="date" name="date" label="Payment Date" placeholder="Date" onChange={handleChange('date')} error={errors.date} />
 
                             </div>
                             <div className='col-md-6'>
