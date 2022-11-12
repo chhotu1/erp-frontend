@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { toast } from 'react-toastify';
 import AuthService from '../services/AuthService';
 import StorageService from '../services/StorageService';
 import { useNavigate } from 'react-router-dom';
+import { CustomLoader } from '../Components/Shared';
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -17,8 +18,11 @@ const LoginSchema = Yup.object().shape({
 
 const Login = () => {
     const navigate =useNavigate();
+    const [isLoading,setIsLoading] = useState(false)
     const handleSubmit = (value) => {
+        setIsLoading(true)
         AuthService.login(value).then((response) => {
+            setIsLoading(false)
             if (response.data.status === true) {
                 StorageService.setAccessToken(response.data.token)
                 toast.success(response.data.message, {
@@ -32,15 +36,15 @@ const Login = () => {
                     theme: "colored",
                 });
             }
-            console.log(response.data,response.data.status)
         }).catch((error) => {
+            setIsLoading(false)
             console.log(error)
         })
-
     }
 
     return (
         <main>
+            {isLoading?<CustomLoader/>:''}
             <div className="container">
                 <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                     <div className="container">
