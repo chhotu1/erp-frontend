@@ -1,6 +1,7 @@
 import React from 'react';
 import {FaDollarSign, FaShoppingCart, FaUsers} from 'react-icons/fa'
-const Dashboard = () => {
+const Dashboard = ({dashboard}) => {
+
     return (
         <div>
             <main id="main" className="main">
@@ -23,32 +24,37 @@ const Dashboard = () => {
                         <div className="col-lg-8">
                             <div className="row">
                                 {/* Sales Card */}
-                                <div className="col-xxl-4 col-md-6">
-                                    <div className="card info-card sales-card">
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                Total Credit <span>| This Month</span>
-                                            </h5>
-                                            <div className="d-flex align-items-center">
-                                                <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <FaShoppingCart />
-                                                </div>
-                                                <div className="ps-3">
-                                                    <h6>145</h6>
-                                                    <span className="text-success small pt-1 fw-bold">
-                                                        12%
-                                                    </span>{" "}
-                                                    <span className="text-muted small pt-2 ps-1">
-                                                        increase
-                                                    </span>
+                                {dashboard && dashboard.data && dashboard.data.map((item,index)=>{
+                                    return(
+                                        <div className="col-xxl-4 col-md-6" key={index}>
+                                        <div className="card info-card sales-card">
+                                            <div className="card-body">
+                                                <h5 className="card-title">
+                                                    Total {item._id} <span>| This Month</span>
+                                                </h5>
+                                                <div className="d-flex align-items-center">
+                                                    <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                        <FaDollarSign />
+                                                    </div>
+                                                    <div className="ps-3">
+                                                        <h6>{item.total}</h6>
+                                                        <span className="text-success small pt-1 fw-bold">
+                                                            12%
+                                                        </span>{" "}
+                                                        <span className="text-muted small pt-2 ps-1">
+                                                            increase
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    )
+                                })}
+                               
                                 {/* End Sales Card */}
                                 {/* Revenue Card */}
-                                <div className="col-xxl-4 col-md-6">
+                                {/* <div className="col-xxl-4 col-md-6">
                                     <div className="card info-card revenue-card">
                                         <div className="card-body">
                                             <h5 className="card-title">
@@ -70,10 +76,10 @@ const Dashboard = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* End Revenue Card */}
                                 {/* Customers Card */}
-                                <div className="col-xxl-4 col-xl-12">
+                                {/* <div className="col-xxl-4 col-xl-12">
                                     <div className="card info-card customers-card">
                                         <div className="card-body">
                                             <h5 className="card-title">
@@ -95,7 +101,7 @@ const Dashboard = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="col-12">
                                     <div className="card recent-sales overflow-auto">
                                         

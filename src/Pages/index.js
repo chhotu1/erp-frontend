@@ -1,16 +1,22 @@
-import React, { useEffect } from 'react'
-import { useDispatch,useSelector } from 'react-redux';
+import React, { useCallback, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Dashboard } from '../Components';
-import { getAllTodo } from '../store/Slices/authSlice';
+import { dashboardResults } from '../store/Slices/cashbookSlice';
 const Pages = () => {
   const dispatch = useDispatch();
-  const d= useSelector((state)=>({...state.auth}))
-  useEffect(()=>{
-    dispatch(getAllTodo());
-  },[])
+  const { dashboard } = useSelector((state) => ({ ...state.cashbook }))
+
+  const dashbordData = useCallback(() => {
+    dispatch(dashboardResults({}));
+  }, [dispatch])
+
+  useEffect(() => {
+    dashbordData()
+  }, [dashbordData])
+
   return (
     <div>
-      <Dashboard/>
+      <Dashboard dashboard={dashboard} />
     </div>
   )
 }

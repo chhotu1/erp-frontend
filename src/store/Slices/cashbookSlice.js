@@ -79,6 +79,26 @@ export const remove = createAsyncThunk(
   }
 );
 
+export const dashboardResults = createAsyncThunk(
+  "cashbook/dashboard",
+  async ({},{ rejectWithValue }) => {
+    try {
+      const response = await CashbookService.dashboardData();
+      if (response.data.status === true) {
+        return response.data;
+      } else {
+        return [];
+      }
+    } catch (error) {
+      if (error.response) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue("Something went wrong");
+      }
+    }
+  }
+);
+
 const cashbookSlice = createSlice({
   name: "cashbook",
   initialState: {
@@ -86,6 +106,7 @@ const cashbookSlice = createSlice({
     create_update_loading: false,
     cashbook: {},
     cashbooks: [],
+    dashboard: [],
     error: ""
   },
 
@@ -109,6 +130,17 @@ const cashbookSlice = createSlice({
       state.loading = false
     },
     [cashbookList.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [dashboardResults.pending]: (state, action) => {
+      state.loading = true
+    },
+    [dashboardResults.fulfilled]: (state, action) => {
+      state.dashboard = action.payload;
+      state.loading = false
+    },
+    [dashboardResults.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },

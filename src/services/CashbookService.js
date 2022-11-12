@@ -5,6 +5,9 @@ import StorageService from './StorageService';
 const list = () => {
     return http.get(endpoints.cashbook, {headers: {token: StorageService.getAccessToken()}});
 };
+const dashboardData = () => {
+  return http.get('dashboard', {headers: {token: StorageService.getAccessToken()}});
+};
 
 const get = id => {
   return http.get(`${endpoints.cashbook}/${id}`, {headers: {token: StorageService.getAccessToken()}});
@@ -23,7 +26,8 @@ const CashbookService = {
  list,
  remove,
  create,
- get
+ get,
+ dashboardData
 };
 
 export default CashbookService;
