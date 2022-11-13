@@ -3,33 +3,25 @@ import endpoints from "../utils/endpoints";
 import StorageService from './StorageService';
 
 const getAllUsers = () => {
-    return http.get(endpoints.user, {headers: {token: StorageService.getAccessToken()}});
+  return http.get(endpoints.user, { headers: { token: StorageService.getAccessToken() } });
 };
 
-const get = id => {
-  return http.get(`/tutorials/${id}`);
+const getUserById = id => {
+  return http.get(`${endpoints.user}/${id}`, { headers: { token: StorageService.getAccessToken() } });
 };
-
-const create = data => {
-  return http.post("/tutorials", data);
-};
-
-const update = (id, data) => {
-  return http.put(`/tutorials/${id}`, data);
+const userUpdate = (id, data) => {
+  return http.put(`${endpoints.user}/${id}`, data, { headers: { token: StorageService.getAccessToken() } });
 };
 
 const remove = id => {
-  return http.delete(`${endpoints.user}/${id}`, {headers: {token: StorageService.getAccessToken()}});
-};
-
-
-const findByTitle = title => {
-  return http.get(`/tutorials?title=${title}`);
+  return http.delete(`${endpoints.user}/${id}`, { headers: { token: StorageService.getAccessToken() } });
 };
 
 const UserService = {
- getAllUsers,
- remove
+  getAllUsers,
+  remove,
+  getUserById,
+  userUpdate
 };
 
 export default UserService;

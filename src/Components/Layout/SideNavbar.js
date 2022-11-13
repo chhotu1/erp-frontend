@@ -6,6 +6,11 @@ import RouteName from '../../CustomRoutes/RouteName';
 const SideNavbar = () => {
     const [collapsedToggled,setCollapsedToggled] = useState('');
     const [isCollapse,setIsCollapse] = useState(false);
+    const [width, setWidth] = useState(window.innerWidth)
+    window.addEventListener('resize', function(event){
+        setWidth(window.innerWidth)
+    });
+
     const handleCollaped=(collapse)=>{
         if(collapsedToggled===collapse){
             setIsCollapse(false)
@@ -16,10 +21,16 @@ const SideNavbar = () => {
         }
     }
 
+    const clickMenu=()=>{
+        if(width <= 768){
+            document.body.classList.toggle('toggle-sidebar');
+        }
+    }
+
     return (
         <aside id="sidebar" className="sidebar">
             <ul className="sidebar-nav" id="sidebar-nav">
-                <li className="nav-item">
+                <li className="nav-item" onClick={clickMenu}>
                     <Link className="nav-link" to="/">
                         <BsGridFill className='bi bi-grid'/>
                         <span>Dashboard</span>
@@ -83,13 +94,13 @@ const SideNavbar = () => {
 
                     </ul>
                 </li> */}
-                <li className="nav-item">
+                <li className="nav-item" onClick={clickMenu}>
                     <Link to={RouteName.USER} className="nav-link collapsed" >
                         <FaUser />
                         <span>User management</span>
                     </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" onClick={clickMenu}>
                     <Link to={RouteName.CASHBOOK} className="nav-link collapsed" >
                         <FaUsers />
                         <span>Cashbook</span>

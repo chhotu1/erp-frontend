@@ -36,7 +36,7 @@ const Rows = (props) => {
             </td>
             <td>{data?.phone}</td>
             <td>
-                {/* <div className="btn btn-info btn-sm"><Link to={'/user/edit/' + data._id} ><FaRegEdit /></Link></div> */}
+                <div className="btn btn-info btn-sm"><Link to={'/user/' + data._id} ><FaRegEdit /></Link></div>
                 <div className="btn btn-danger btn-sm m-2" onClick={handleDelete}><FaTrashAlt /></div>
             </td>
         </tr>

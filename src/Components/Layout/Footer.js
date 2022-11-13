@@ -5,13 +5,13 @@ const Footer = () => {
     <footer id="footer" className="footer">
     <div className="copyright">
       © Copyright{" "}
-      <strong>
-        <span>NiceAdmin</span>
-      </strong>
+      {/* <strong>
+        <span>Chhotu</span>
+      </strong> */}
       . All Rights Reserved
     </div>
     <div className="credits">
-      Designed by <a href="https://erp-rho.vercel.app/">ERP</a>
+      Designed by <a href="https://erp-rho.vercel.app/">Chhotu sow</a>
     </div>
   </footer>
   )

@@ -22,7 +22,6 @@ const User = () => {
         getUsers()
       }, [getUsers])
 
-
     return (
         <MainSection linkTitle="Add new user" link={RouteName.USER_CREATE}
             breadcrumb={breadcrumb} breadcrumbTitle="Users" cardTitle="Users">
