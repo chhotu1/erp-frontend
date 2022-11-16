@@ -5,13 +5,21 @@ import StorageService from './StorageService';
 const list = () => {
     return http.get(endpoints.cashbook, {headers: {token: StorageService.getAccessToken()}});
 };
+
+const getCashbookByUserId = (user_id) => {
+  return http.get(`getCashbookByUserId/${user_id}`, {headers: {token: StorageService.getAccessToken()}});
+};
+
 const dashboardData = () => {
   return http.get('dashboard', {headers: {token: StorageService.getAccessToken()}});
 };
 
-const get = id => {
+const getCashbookById = id => {
   return http.get(`${endpoints.cashbook}/${id}`, {headers: {token: StorageService.getAccessToken()}});
+};
 
+const cashbookUpdate = (id, data) => {
+  return http.put(`${endpoints.cashbook}/${id}`, data, { headers: { token: StorageService.getAccessToken() } });
 };
 
 const create = data => {
@@ -26,8 +34,10 @@ const CashbookService = {
  list,
  remove,
  create,
- get,
- dashboardData
+ dashboardData,
+ cashbookUpdate,
+ getCashbookById,
+ getCashbookByUserId
 };
 
 export default CashbookService;

@@ -12,6 +12,8 @@ import UserEdit from '../Pages/User/Edit';
 
 import Cashbook from '../Pages/Cashbook';
 import CashbookAdd from '../Pages/Cashbook/Add';
+import CashbookEdit from '../Pages/Cashbook/Edit';
+
 
 
 const AdminRoutes = () => {
@@ -27,6 +29,8 @@ const AdminRoutes = () => {
                     <Route path={`${RouteName.USER}/:id`} element={<UserEdit />} />
                     <Route exact={true} path={RouteName.CASHBOOK} element={<Cashbook />} />
                     <Route path={RouteName.CASHBOOK_CREATE} element={<CashbookAdd />} />
+                    <Route path={`${RouteName.CASHBOOK}/:id`} element={<CashbookEdit />} />
+
                 </Route>
             </Routes>
             <Footer />

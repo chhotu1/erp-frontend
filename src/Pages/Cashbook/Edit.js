@@ -1,27 +1,25 @@
 import React, { useCallback, useEffect } from 'react';
 import { Formik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import RouteName from '../../CustomRoutes/RouteName';
-import { MainSection} from '../../Components';
-import { cashbookSchema} from '../../utils/FormValidation';
-import { create } from '../../store/Slices/cashbookSlice';
+import { MainSection } from '../../Components';
+import { cashbookSchema } from '../../utils/FormValidation';
+import { cashbookUpdate, create, getCashbookById } from '../../store/Slices/cashbookSlice';
 import { CustomLoader } from '../../Components/Shared';
 import { getAllUsers } from '../../store/Slices/userSlice';
 import Forms from './Forms';
-const Add = () => {
+const Edit = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const {id} = useParams();
     let breadcrumb = [
         { title: "Home", link: RouteName.HOME },
         { title: "Cashbook", link: RouteName.CASHBOOK },
     ]
-    const { loading } = useSelector((state) => ({
-        ...state.auth,
-    }));
 
-    const { create_update_loading } = useSelector((state) => ({
+    const { create_update_loading,cashbook,loading } = useSelector((state) => ({
         ...state.cashbook,
     }));
 
@@ -33,18 +31,26 @@ const Add = () => {
         dispatch(getAllUsers({}));
     }, [dispatch])
 
+    useEffect(()=>{
+        getCashbookbyId();
+    },[id]) 
+
+    const getCashbookbyId=()=>{
+        dispatch(getCashbookById({ id }));
+    }
+
     useEffect(() => {
         getUsers()
     }, [getUsers])
 
     const handleCashbook = (payload) => {
-        dispatch(create({ payload, navigate, toast }));
+        dispatch(cashbookUpdate({ payload,id, navigate, toast }));
     }
 
     return (
-        <MainSection breadcrumb={breadcrumb} backLink={RouteName.CASHBOOK} breadcrumbTitle="Create" cardTitle="Back">
-            {create_update_loading ? <CustomLoader /> : ''}
-            <Formik initialValues={{ user: "", type: "", title: '',amount:"" }}
+        <MainSection breadcrumb={breadcrumb} backLink={RouteName.CASHBOOK} breadcrumbTitle="Update" cardTitle="Back">
+            {create_update_loading || loading ? <CustomLoader /> : ''}
+            <Formik initialValues={{ user: cashbook?.user?._id, type: cashbook?.type, title:cashbook?.title,amount:cashbook?.amount,date:cashbook?.date }}
                 validationSchema={cashbookSchema}
                 enableReinitialize
                 onSubmit={handleCashbook}>
@@ -63,4 +69,4 @@ const Add = () => {
     )
 }
 
-export default Add
+export default Edit
