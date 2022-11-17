@@ -4,24 +4,28 @@ import RouteName from '../../CustomRoutes/RouteName';
 import MainSection from '../../Components/MainSection';
 import Rows from './Rows';
 import { CustomLoader } from '../../Components/Shared';
-import { cashbookList } from '../../store/Slices/cashbookSlice';
+import { cashbookList, dashboardResults } from '../../store/Slices/cashbookSlice';
 const Cashbook = () => {
     let breadcrumb = [
         { title: "Home", link: RouteName.HOME },
     ]
     const dispatch = useDispatch();
 
-    const { cashbooks, loading } = useSelector((state) => ({
+    const { cashbooks, loading,dashboard } = useSelector((state) => ({
         ...state.cashbook,
     }));
 
+
     const getCashbooks = useCallback(() => {
         dispatch(cashbookList({}));
+        dispatch(dashboardResults({}));
       }, [dispatch])
     
       useEffect(() => {
         getCashbooks()
       }, [getCashbooks])
+
+
 
 
     return (

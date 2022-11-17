@@ -39,7 +39,7 @@ const Dashboard = ({ dashboard }) => {
                                     <div className="card info-card sales-card">
                                         <div className="card-body">
                                             <h5 className="card-title">
-                                                Total credit <span>| This Month</span>
+                                                Total credit
                                             </h5>
                                             <div className="d-flex align-items-center">
                                                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -47,12 +47,12 @@ const Dashboard = ({ dashboard }) => {
                                                 </div>
                                                 <div className="ps-3">
                                                     <h6>&#8377;{credit}</h6>
-                                                    <span className="text-success small pt-1 fw-bold">
+                                                    {/* <span className="text-success small pt-1 fw-bold">
                                                         12%
-                                                    </span>{" "}
+                                                    </span>
                                                     <span className="text-muted small pt-2 ps-1">
                                                         increase
-                                                    </span>
+                                                    </span> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -72,12 +72,12 @@ const Dashboard = ({ dashboard }) => {
                                                 </div>
                                                 <div className="ps-3">
                                                     <h6>&#8377;{debit}</h6>
-                                                    <span className="text-success small pt-1 fw-bold">
+                                                    {/* <span className="text-success small pt-1 fw-bold">
                                                         8%
                                                     </span>{" "}
                                                     <span className="text-muted small pt-2 ps-1">
                                                         increase
-                                                    </span>
+                                                    </span> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@ const Dashboard = ({ dashboard }) => {
 
                                         <div className="card-body">
                                             <h5 className="card-title">
-                                                Recent Sales <span>| Today</span>
+                                                Recent Credit and debit
                                             </h5>
                                             <table className="table table-borderless datatable">
                                                 <thead>

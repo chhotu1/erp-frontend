@@ -22,12 +22,12 @@ const Forms = (props) => {
                 </Form.Select>
                 <div className="error">{errors.user}</div>
                 <Input name="title" label="Title" placeholder="Title" value={values?.title?values?.title:''} onChange={handleChange('title')} error={errors.title} />
-                <Input type="date" name="date" label="Payment Date" value={values?.date?values?.date:''} placeholder="Date" onChange={handleChange('date')} error={errors.date} />
+                <Input type="date"  name="date" label="Payment Date" value={values?.date?values?.date:''} placeholder="Date" onChange={handleChange('date')} error={errors.date} />
 
             </div>
             <div className='col-md-6'>
                 <Select label="Select Type" placeholder="Select Type" value={values?.type?values?.type:''} name="type" onBlur={handleBlur('type')} onChange={handleChange('type')} data={cashbookTypes} error={errors.type} />
-                <Input name="amount" label="Amount" type="text" value={values?.amount?values?.amount:0} placeholder="Amount" onBlur={handleBlur('amount')} onChange={handleChange('amount')} error={errors.amount} />
+                <Input name="amount" label="Amount" type="text" value={values?.amount?values?.amount:""} placeholder="Amount" onBlur={handleBlur('amount')} onChange={handleChange('amount')} error={errors.amount} />
             </div>
         </div>
     )
