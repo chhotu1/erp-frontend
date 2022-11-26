@@ -1,3 +1,4 @@
+import React,{ memo } from 'react';
 import Form from 'react-bootstrap/Form';
 const Select = (props) => {
     const { error, label, name,placeholder,data, ...otherProps } = props;
@@ -21,4 +22,4 @@ const Select = (props) => {
     )
 }
 
-export default Select
+export default memo(Select)

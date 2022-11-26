@@ -1,6 +1,9 @@
+import React,{ memo } from "react";
+
 const Input = (props) => {
     const { error, label, name, ...otherProps } = props;
     let classname = `form-control ${error ? 'invalid-form' : ''}`;
+    console.log("jjj")
     return (
         <div className="col-12">
             <label htmlFor={"inputNanme4" + name} className="form-label">
@@ -12,4 +15,4 @@ const Input = (props) => {
     )
 }
 
-export default Input
+export default memo(Input)
