@@ -4,6 +4,7 @@ import { FaTrashAlt,FaRegEdit } from "react-icons/fa";
 import { remove } from '../../store/Slices/cashbookSlice';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { createdAtDateFormate } from '../../utils/Constant';
 const Rows = (props) => {
     const { data, index } = props;
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Rows = (props) => {
             <td>{data?.type}</td>
             <td>{data?.user?.name}</td>
             <td>{data?.date}</td>
+            <td>{createdAtDateFormate(data?.created_at)}</td>
             <td>
                 <div className="btn btn-info btn-sm"><Link to={'/cashbook/' + data._id} ><FaRegEdit /></Link></div>
                 <div className="btn btn-danger btn-sm m-2" onClick={handleDelete}><FaTrashAlt /></div>

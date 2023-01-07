@@ -42,6 +42,7 @@ const Cashbook = () => {
                             <th scope="col">Type</th>
                             <th scope="col">User</th>
                             <th scope="col">Date</th>
+                            <th scope="col">CreateAt</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
